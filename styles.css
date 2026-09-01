@@ -98,6 +98,25 @@
 :root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
 :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
 
+/* App icon swap: the dark-background icon reads better against this
+   site's white light-mode page, and the light-background one reads
+   better against the black dark-mode page — the opposite pairing from
+   the app itself, which is about contrast against the page, not
+   matching the OS appearance. Same show/hide pattern as the theme
+   toggle above. */
+.icon-dark-variant { display: inline-block; }
+.icon-light-variant { display: none; }
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .icon-dark-variant { display: none; }
+    :root:not([data-theme="light"]) .icon-light-variant { display: inline-block; }
+}
+
+:root[data-theme="dark"] .icon-dark-variant { display: none; }
+:root[data-theme="dark"] .icon-light-variant { display: inline-block; }
+:root[data-theme="light"] .icon-dark-variant { display: inline-block; }
+:root[data-theme="light"] .icon-light-variant { display: none; }
+
 * { box-sizing: border-box; }
 
 html {
@@ -161,11 +180,15 @@ a { color: inherit; }
     width: 22px;
     height: 22px;
     border-radius: 6px;
-    display: block;
+    /* No explicit display here — .brand is itself a flex container, which
+       already blockifies its children, and this was previously winning a
+       specificity fight against .icon-dark-variant/.icon-light-variant's
+       display:none, showing both variants at once. */
 }
 
 .site-nav nav {
     display: flex;
+    align-items: center;
     gap: 28px;
     flex: none;
 }
