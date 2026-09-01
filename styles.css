@@ -687,6 +687,34 @@ a { color: inherit; }
 .feature-card li { margin-bottom: 7px; }
 .feature-card li:last-child { margin-bottom: 0; }
 
+/* MARK: About Matomo */
+
+.about-matomo {
+    padding: 0 0 96px;
+}
+
+.about-matomo .panel {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-lg);
+    padding: 48px 40px;
+    text-align: center;
+}
+
+.about-matomo h2 {
+    font-size: clamp(24px, 3.5vw, 30px);
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+}
+
+.about-matomo p {
+    max-width: 620px;
+    margin: 0 auto 22px;
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
 /* MARK: Privacy callout */
 
 .privacy-callout {
@@ -841,4 +869,5 @@ footer .copyright {
     .cta-row { gap: 10px; }
     .store-button { padding: 10px 16px; }
     .privacy-callout .panel { padding: 40px 24px; }
+    .about-matomo .panel { padding: 40px 24px; }
 }
