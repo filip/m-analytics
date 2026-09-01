@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — M-Analytics</title>
+<meta name="description" content="M-Analytics collects nothing. Your Matomo server address and API token stay on your device and are never sent anywhere but the server you configured.">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/icon.png" alt="">
+      M-Analytics
+    </a>
+    <nav>
+      <a href="index.html#features">Features</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</div>
+
+<header class="page-hero wrap">
+  <h1>Privacy Policy</h1>
+  <div class="updated">Last updated: September 2026</div>
+</header>
+
+<div class="content wrap">
+
+  <p>M-Analytics is built around one idea: it's your data, on your Matomo server, and it should stay that way. This policy is short because there isn't much to say — we (CreativeApplications.Net, the developer of M-Analytics) do not collect, store, transmit, or have access to any of your data.</p>
+
+  <h2>What the app does with your information</h2>
+  <p>When you set up M-Analytics, you enter two things: the address of your Matomo server, and an API token you generate yourself in Matomo's admin panel. Both are stored only on your device — the server address in your device's standard app storage, and the token in the iOS/macOS Keychain, the same secure system every app uses to store passwords.</p>
+  <p>The app uses that address and token to make requests directly from your device to <em>your</em> Matomo server, over HTTPS (or plain HTTP if you've deliberately pointed it at a self-hosted server on your local network — see below). Those requests ask Matomo for the same reporting data you'd see logging into Matomo's own dashboard: visit counts, pageviews, visitor locations, referrers, and similar site-traffic metrics. Matomo's response is displayed in the app and, if you've enabled widgets, cached briefly on your device so your Home Screen widgets can show it without a live connection every few seconds.</p>
+  <p>None of this ever passes through a server we operate, because we don't operate one. There is no analytics SDK, crash reporter, advertising framework, or other third-party code embedded in the app that could collect or transmit anything on our behalf.</p>
+
+  <h2>What we collect</h2>
+  <p>Nothing. We have no way to see your server address, your API token, your site's traffic data, or anything else the app displays. If you contact us directly for support (see below), we'll have whatever you choose to send us in that message, and nothing more.</p>
+
+  <h2>Network connections</h2>
+  <p>By default, the app expects your Matomo server to use HTTPS. It also allows plain HTTP connections, because Matomo installs on a local network or an internal server are common and often don't have a certificate — that's a deliberate accommodation for real-world setups, not a way of routing your data anywhere insecure. Either way, the only destination for any request the app makes is the server address you typed in yourself.</p>
+
+  <h2>Data on your device</h2>
+  <p>Your server address, site selection, and display preferences are stored in standard app storage on your device. Your API token is stored in the Keychain, which iOS and macOS encrypt at rest. If you use the app on both a Mac and an iPhone, each keeps its own separate copy — nothing syncs between them, because there's no service of ours for them to sync through.</p>
+
+  <h2>Children's privacy</h2>
+  <p>M-Analytics is not directed at children and does not knowingly collect information from anyone, of any age — see above.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy ever changes, the update will be posted here with a new "last updated" date. Given the app's design, we don't expect that to happen often.</p>
+
+  <h2>Contact</h2>
+  <div class="contact-card">
+    <p>Questions about this policy or the app:</p>
+    <p class="email"><a href="mailto:info@creativeapplications.net">info@creativeapplications.net</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="copyright">© 2026 CreativeApplications.Net</div>
+    <div class="foot-links">
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:18px;">
+    <div class="disclaimer">M-Analytics is an independent client built against Matomo's Reporting API. It is not affiliated with, endorsed by, or supported by the Matomo project or InnoCraft Holding SAS.</div>
+  </div>
+</footer>
+
+</body>
+</html>

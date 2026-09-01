@@ -1,0 +1,762 @@
+/* M-Analytics marketing site — shared styles.
+   Palette pulled straight from the app icon: light gray / charcoal panels,
+   green accent (the icon's live-dot green), Apple-style neutral grays for
+   everything else. No frameworks, no build step — plain CSS custom
+   properties with a prefers-color-scheme swap. */
+
+:root {
+    --bg: #ffffff;
+    --bg-alt: #f5f5f7;
+    --panel: #f5f5f7;
+    --panel-border: rgba(0, 0, 0, 0.08);
+    --text: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --text-tertiary: #86868b;
+    --accent: #2fb350;
+    --accent-ink: #ffffff;
+    --icon-light-bg: #dbdbdb;
+    --icon-glyph: #333333;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #000000;
+        --bg-alt: #0d0d0f;
+        --panel: #17171a;
+        --panel-border: rgba(255, 255, 255, 0.08);
+        --text: #f5f5f7;
+        --text-secondary: #a1a1a6;
+        --text-tertiary: #86868b;
+        --accent: #34d058;
+        --accent-ink: #06170a;
+        --icon-light-bg: #1f1f1f;
+        --icon-glyph: #b3b3b3;
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 30px rgba(0, 0, 0, 0.5);
+    }
+}
+
+* { box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    /* Safety net, not the real fix (that's the nav below) — nothing on this
+       page should ever need to scroll sideways. */
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+}
+
+a { color: inherit; }
+
+.wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* MARK: Nav */
+
+.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--panel-border);
+}
+
+.site-nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    gap: 12px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.brand img {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    display: block;
+}
+
+.site-nav nav {
+    display: flex;
+    gap: 28px;
+    flex: none;
+}
+
+.site-nav nav a {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.site-nav nav a:hover { color: var(--text); }
+
+@media (max-width: 420px) {
+    .site-nav nav { gap: 14px; }
+    .site-nav nav a { font-size: 12px; }
+    .brand { font-size: 14px; }
+}
+
+/* MARK: Hero */
+
+.hero {
+    padding: 88px 0 64px;
+    text-align: center;
+}
+
+.hero-icon {
+    width: 128px;
+    height: 128px;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    margin-bottom: 28px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 7vw, 64px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
+}
+
+.hero .tagline {
+    font-size: clamp(18px, 2.6vw, 23px);
+    color: var(--text-secondary);
+    max-width: 620px;
+    margin: 0 auto 32px;
+    font-weight: 400;
+}
+
+.price-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    max-width: calc(100% - 32px);
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 36px;
+    /* One line whenever there's room; below that, wrap rather than force
+       the page wider than the viewport — this exact text was the one
+       thing on the page that could actually cause that. */
+    white-space: normal;
+    text-align: center;
+}
+
+.price-pill .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+}
+
+.cta-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.store-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--text);
+    color: var(--bg);
+    border-radius: var(--radius-sm);
+    padding: 11px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.store-button:hover { transform: translateY(-1px); opacity: 0.88; }
+
+.store-button svg { width: 18px; height: 18px; flex: none; }
+
+.store-button .label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.15;
+}
+
+.store-button .label small {
+    font-size: 10px;
+    font-weight: 400;
+    opacity: 0.75;
+}
+
+.coming-soon-note {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+}
+
+/* MARK: Mockup showcase */
+
+.showcase {
+    padding: 40px 0 96px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+}
+
+@media (max-width: 760px) {
+    .showcase { grid-template-columns: 1fr; }
+}
+
+.mock-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Menu-bar popover mock — mirrors the app's actual panel structure
+   (header, NOW, Today so far, By hour, Latest visitors) rather than
+   a generic stat card, so it reads as the real UI at a glance. */
+
+.mock-menubar {
+    background: var(--bg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--panel-border);
+    overflow: hidden;
+    font-variant-numeric: tabular-nums;
+    flex: 1;
+}
+
+.mock-menubar .mm-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--panel-border);
+}
+
+.mm-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mm-icon {
+    display: flex;
+    color: var(--text-secondary);
+}
+
+.mm-icon svg { width: 15px; height: 15px; }
+
+.mm-site {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.mm-sub {
+    display: block;
+    font-size: 10.5px;
+    color: var(--text-tertiary);
+}
+
+.mm-spark {
+    width: 64px;
+    height: 20px;
+    color: var(--text-tertiary);
+    flex-shrink: 0;
+}
+
+.mock-menubar .mm-header .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent);
+    display: inline-block;
+}
+
+/* Two-column layout, echoing the Mac window's draggable two-column
+   panel grid (as opposed to the popover's single-column list) — each
+   column lays out independently so mismatched panel heights don't
+   force awkward gaps like a strict CSS grid would. */
+.mm-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 12px;
+}
+
+.mm-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+.mm-section {
+    background: var(--panel-alt, var(--panel));
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+.mm-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+}
+
+.mm-label-row {
+    justify-content: space-between;
+}
+
+.mm-count {
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: none;
+}
+
+.mm-legend {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.mm-legend .dash,
+.mm-legend .dots {
+    width: 10px;
+    height: 0;
+    border-top: 1.5px solid var(--text-tertiary);
+    display: inline-block;
+}
+
+.mm-legend .dots {
+    border-top-style: dotted;
+    border-top-color: var(--text-tertiary);
+    margin-left: 6px;
+}
+
+.mm-now-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.mm-num {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.mm-num-label,
+.mm-fine {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.mm-fine { margin-top: 2px; }
+
+.mm-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.mm-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mm-stat-label {
+    font-size: 10px;
+    color: var(--text-secondary);
+}
+
+.mm-stat-num {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.mm-badge {
+    align-self: flex-start;
+    font-size: 9px;
+    font-weight: 700;
+    color: #b5651d;
+    background: color-mix(in srgb, #f2994a 22%, transparent);
+    border-radius: 4px;
+    padding: 1px 4px;
+    margin-top: 1px;
+}
+
+.mock-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 40px;
+    padding-top: 8px;
+}
+
+.mock-bars span {
+    flex: 0 0 3px;
+    background: var(--text-tertiary);
+    opacity: 0.6;
+    border-radius: 1px 1px 0 0;
+}
+
+.mm-visitor-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+}
+
+.mm-user-row + .mm-user-row,
+.mm-visitor-row + .mm-visitor-row {
+    border-top: 1px solid var(--panel-border);
+}
+
+.mm-flag {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.mm-user-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+}
+
+.mm-avatar {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--accent) 25%, var(--panel));
+    color: var(--accent);
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.mm-visitor-loc {
+    font-size: 11px;
+    font-weight: 600;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mm-visitor-time {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    flex-shrink: 0;
+}
+
+/* iPhone dashboard mock — the same panels as the menu bar mock, one
+   column wide, matching the single scrolling column of the real
+   iPhone dashboard. */
+
+.mock-phone {
+    background: var(--bg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--panel-border);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-variant-numeric: tabular-nums;
+    flex: 1;
+}
+
+.mock-caption {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* MARK: Features */
+
+.features {
+    padding: 20px 0 100px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-heading h2 {
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+}
+
+.section-heading p {
+    color: var(--text-secondary);
+    font-size: 17px;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+@media (max-width: 860px) {
+    .feature-grid { grid-template-columns: 1fr; }
+}
+
+.feature-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+}
+
+.feature-card .icon-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--accent) 16%, var(--panel));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.feature-card .icon-badge svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--accent);
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+
+.feature-card ul {
+    margin: 0;
+    padding: 0 0 0 18px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.feature-card li { margin-bottom: 7px; }
+.feature-card li:last-child { margin-bottom: 0; }
+
+/* MARK: Privacy callout */
+
+.privacy-callout {
+    padding: 0 0 100px;
+}
+
+.privacy-callout .panel {
+    background: var(--text);
+    color: var(--bg);
+    border-radius: var(--radius-lg);
+    padding: 56px 40px;
+    text-align: center;
+}
+
+.privacy-callout h2 {
+    font-size: clamp(26px, 4vw, 34px);
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+}
+
+.privacy-callout p {
+    max-width: 560px;
+    margin: 0 auto 26px;
+    opacity: 0.75;
+    font-size: 16px;
+}
+
+.text-link {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.text-link:hover { text-decoration: underline; }
+
+/* MARK: Footer */
+
+footer {
+    border-top: 1px solid var(--panel-border);
+    padding: 36px 0 48px;
+}
+
+footer .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+footer .foot-links {
+    display: flex;
+    gap: 22px;
+}
+
+footer .foot-links a {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+footer .foot-links a:hover { color: var(--text); }
+
+footer .disclaimer {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    max-width: 620px;
+    line-height: 1.6;
+}
+
+footer .copyright {
+    font-size: 12px;
+    color: var(--text-tertiary);
+}
+
+/* MARK: Simple content pages (privacy / support) */
+
+.page-hero {
+    padding: 64px 0 32px;
+}
+
+.page-hero h1 {
+    font-size: clamp(32px, 5vw, 44px);
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+}
+
+.page-hero .updated {
+    color: var(--text-tertiary);
+    font-size: 14px;
+}
+
+.content {
+    padding-bottom: 96px;
+    max-width: 720px;
+}
+
+.content h2 {
+    font-size: 20px;
+    margin: 40px 0 12px;
+}
+
+.content h2:first-child { margin-top: 0; }
+
+.content p, .content li {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.content ul { padding-left: 20px; }
+.content li { margin-bottom: 8px; }
+
+.content a { color: var(--accent); text-decoration: none; font-weight: 500; }
+.content a:hover { text-decoration: underline; }
+
+.faq-item {
+    border-top: 1px solid var(--panel-border);
+    padding: 22px 0;
+}
+
+.faq-item:last-child { border-bottom: 1px solid var(--panel-border); }
+
+.faq-item h3 {
+    font-size: 16px;
+    margin: 0 0 8px;
+}
+
+.faq-item p {
+    margin: 0;
+    font-size: 15px;
+}
+
+.contact-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-md);
+    padding: 26px;
+    margin-top: 8px;
+}
+
+.contact-card p { margin: 0 0 4px; }
+.contact-card .email { font-size: 17px; font-weight: 600; color: var(--text); }
+
+/* MARK: Small-screen pass */
+
+@media (max-width: 480px) {
+    .wrap { padding: 0 16px; }
+    .hero { padding: 64px 0 48px; }
+    .price-pill { font-size: 12px; padding: 7px 14px; }
+    .cta-row { gap: 10px; }
+    .store-button { padding: 10px 16px; }
+    .privacy-callout .panel { padding: 40px 24px; }
+}

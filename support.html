@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — M-Analytics</title>
+<meta name="description" content="Get help setting up M-Analytics, generating a Matomo API token, and answers to common questions.">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/icon.png" alt="">
+      M-Analytics
+    </a>
+    <nav>
+      <a href="index.html#features">Features</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</div>
+
+<header class="page-hero wrap">
+  <h1>Support</h1>
+  <div class="updated">Setup help, answers to common questions, and how to reach us.</div>
+</header>
+
+<div class="content wrap">
+
+  <h2>Getting started</h2>
+  <p>M-Analytics needs two things to show your site's data: your Matomo server's address, and an API token.</p>
+  <ul>
+    <li>Open the app's Settings, and enter your server's URL — for example <code>https://analytics.example.com</code>. Paste it however you have it; the app will find the right API path itself.</li>
+    <li>In Matomo, go to <strong>Administration → Personal → Security → Auth tokens</strong> and create a new token. <strong>View access is enough</strong> — the app never writes anything back to Matomo.</li>
+    <li>Paste the token in, tap Connect, and pick your site if you manage more than one.</li>
+  </ul>
+  <p>No Matomo server yet? Point the app at <code>https://demo.matomo.cloud</code> with the token <code>anonymous</code> to see it running against live demo data first.</p>
+
+  <h2>Frequently asked questions</h2>
+
+  <div class="faq-item">
+    <h3>I see "You do not have enough permission to access the segment userId"</h3>
+    <p>This means your API token can view general site traffic but hasn't been granted access to identify individual logged-in users. Everything else in the app keeps working — only the Recent Users panel and the map's member markers depend on that permission. If you want that data too, ask whoever manages your Matomo installation for a token with broader access.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>My hourly chart is empty, but I know I had visitors today</h3>
+    <p>If a report gets enabled on your Matomo server after the day's archives were already built, Matomo doesn't retroactively fill in that history — it only starts appearing from the next scheduled archiving run onward. This isn't a bug in the app; it's how Matomo's archiving works. Check back after Matomo's next archiving pass, or ask your Matomo admin to trigger one manually.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Can I connect to a self-hosted Matomo on my local network?</h3>
+    <p>Yes. The app allows plain HTTP connections specifically for this case — a self-hosted install on a local network often doesn't have a certificate. Just enter the address as-is.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Do the Mac and iPhone apps share my settings?</h3>
+    <p>No — they're separate apps with separate storage, so your server, token, and preferences are set up independently on each device. This is also true for privacy: nothing you enter on one device is visible to the other, or to us.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Why does "Pageviews" read lower than "Actions" in Today's Summary?</h3>
+    <p>Actions counts every interaction Matomo tracks — pageviews, downloads, outbound link clicks, events, and site searches. Pageviews is just the page-load count on its own, so it's normal for it to be the smaller of the two.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>How do I hide a panel or widget I don't use?</h3>
+    <p>In Settings → Panels, toggle off anything you don't want to see. On the Mac, this only affects the menu bar popover — the full window always shows everything, and panels there can be dragged to reorder. On iPhone, hidden panels also stop appearing in the scrolling dashboard, but keep updating in the background so they're current if you turn them back on.</p>
+  </div>
+
+  <h2>Still stuck?</h2>
+  <div class="contact-card">
+    <p>Send a description of what you're seeing, and your Matomo version if you know it:</p>
+    <p class="email"><a href="mailto:support@creativeapplications.net">support@creativeapplications.net</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="copyright">© 2026 CreativeApplications.Net</div>
+    <div class="foot-links">
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:18px;">
+    <div class="disclaimer">M-Analytics is an independent client built against Matomo's Reporting API. It is not affiliated with, endorsed by, or supported by the Matomo project or InnoCraft Holding SAS.</div>
+  </div>
+</footer>
+
+</body>
+</html>
