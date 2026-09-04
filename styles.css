@@ -287,6 +287,16 @@ a { color: inherit; }
 
 .store-button:hover { transform: translateY(-1px); opacity: 0.88; }
 
+/* iPhone app isn't live yet — dim its badge so the eye lands on the
+   Mac App Store button, which is. */
+.store-button-pending {
+    opacity: 0.45;
+    pointer-events: none;
+    cursor: default;
+}
+
+.store-button-pending:hover { transform: none; opacity: 0.45; }
+
 /* Sized to span the full label block (eyebrow + store-name stacked),
    so its top/bottom edges line up with the text's, like the real
    Apple badge — not just vertically centered at an arbitrary size. */
