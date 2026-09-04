@@ -57,6 +57,11 @@
   </div>
 
   <div class="faq-item">
+    <h3>How do I see logged-in WordPress users in the Recent Users panel?</h3>
+    <p>The Recent Users panel is built on Matomo's User ID, and a stock WordPress install doesn't record one — it has to be set explicitly. If your site runs the <strong>Matomo for WordPress</strong> plugin, turn on its "Track User ID" setting and it will set the User ID to each visitor's WP username automatically the moment they log in. You'll also need the <strong>Live</strong> plugin enabled on the Matomo side, and an API token with access to the <code>userId</code> segment (see the permission question above). Once those are in place, logged-in members start showing up in Recent Users and as member markers on the visitor map — visitors who never log in still won't have a User ID, which is expected.</p>
+  </div>
+
+  <div class="faq-item">
     <h3>My hourly chart is empty, but I know I had visitors today</h3>
     <p>If a report gets enabled on your Matomo server after the day's archives were already built, Matomo doesn't retroactively fill in that history — it only starts appearing from the next scheduled archiving run onward. This isn't a bug in the app; it's how Matomo's archiving works. Check back after Matomo's next archiving pass, or ask your Matomo admin to trigger one manually.</p>
   </div>
