@@ -869,6 +869,24 @@ footer .copyright {
     font-size: 15px;
 }
 
+.faq-item p + p { margin-top: 10px; }
+
+.faq-item pre {
+    background: var(--bg-alt);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin: 10px 0;
+    overflow-x: auto;
+}
+
+.faq-item pre code {
+    font-size: 13px;
+    line-height: 1.5;
+    background: none;
+    padding: 0;
+}
+
 .contact-card {
     background: var(--panel);
     border: 1px solid var(--panel-border);

@@ -59,6 +59,10 @@
   <div class="faq-item">
     <h3>How do I see logged-in WordPress users in the Recent Users panel?</h3>
     <p>The Recent Users panel is built on Matomo's User ID, and a stock WordPress install doesn't record one — it has to be set explicitly. If your site runs the <strong>Matomo for WordPress</strong> plugin, turn on its "Track User ID" setting and it will set the User ID to each visitor's WP username automatically the moment they log in. You'll also need the <strong>Live</strong> plugin enabled on the Matomo side, and an API token with access to the <code>userId</code> segment (see the permission question above). Once those are in place, logged-in members start showing up in Recent Users and as member markers on the visitor map — visitors who never log in still won't have a User ID, which is expected.</p>
+    <p>Not using that plugin — a manual tracking snippet, a different Matomo integration, or another CMS? Call <code>setUserId</code> before the tracker's page-view call, for any logged-in user, with whatever identifier you want to see in the panel (a username, an account ID — it doesn't have to be the WP username):</p>
+    <pre><code>_paq.push(['setUserId', currentUserIdentifier]);
+_paq.push(['trackPageView']);</code></pre>
+    <p>Only add this where you already know who's logged in — typically inside a template conditional, so logged-out visitors never get a User ID set for them.</p>
   </div>
 
   <div class="faq-item">
