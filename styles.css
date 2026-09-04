@@ -276,7 +276,7 @@ a { color: inherit; }
 .store-button {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     background: var(--text);
     color: var(--bg);
     border-radius: var(--radius-sm);
@@ -287,7 +287,10 @@ a { color: inherit; }
 
 .store-button:hover { transform: translateY(-1px); opacity: 0.88; }
 
-.store-button svg { width: 22px; height: 22px; flex: none; }
+/* Sized to span the full label block (eyebrow + store-name stacked),
+   so its top/bottom edges line up with the text's, like the real
+   Apple badge — not just vertically centered at an arbitrary size. */
+.store-button svg { width: 31px; height: 31px; flex: none; }
 
 .store-button .label {
     display: flex;
